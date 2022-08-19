@@ -1,6 +1,8 @@
-from pytube import YouTube
+import pytube
 
 
 def get_audio(url, filename, path='download'):
-    yt = YouTube(url)
+    filename = filename.get() + ".mp4"
+    url = url.get()
+    yt = pytube.YouTube(url)
     r = yt.streams.filter(only_audio=True).first().download(path, filename)
